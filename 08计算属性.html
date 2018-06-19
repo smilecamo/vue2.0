@@ -10,10 +10,25 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        {{full}}
+    </div>
     <script src="./vue.js"></script>
     <script>
-        
+        let app = new Vue({
+            el: '#app',
+            data: {
+                first: 'hello',
+                last: 'world'
+            },
+            //计算属性内置缓存
+            computed: {
+                full(){
+                    console.log('答应了一次');
+                    return this.first+ ' '+ this.last
+                }
+            }
+            })
     </script>
 </body>
 

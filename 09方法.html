@@ -5,18 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>方法</title>
 
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        {{full()}}
+        {{age}}
+    </div>
     <script src="./vue.js"></script>
     <script>
         let app = new Vue({
             el: '#app',
             data: {
-
+                first: 'hello',
+                last: 'world',
+                age: 27
+            },
+            methods:{
+                full(){
+                    console.log('打印了一次');
+                    return this.last + ' '+ this.first
+                }
             }
         })
     </script>

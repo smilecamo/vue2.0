@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监听器</title>
+
+</head>
+
+<body>
+    <div id="app">
+        {{full}}
+        {{age}}
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                first: 'hallo',
+                last: 'world',
+                full: 'hallo world',
+                age: 29
+            },
+            watch:{
+                first(){
+                    console.log('改变first');
+                    this.full= this.first+''+this.last
+                },
+                last(){
+                    console.log('改变last');
+                    this.full= this.first+''+this.last
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
