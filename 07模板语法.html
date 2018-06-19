@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板语法</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 插值表达式转义 -->
+        <div>{{name}}</div>
+        <!-- 转义输入 -->
+        <div v-text='name'></div>
+        <!-- 不转义 -->
+        <div v-html='name'></div>
+        <!-- 插值表达式转义 -->
+        <div>{{msg+'world'}}</div>
+        <!-- 转义输入 -->
+        <div v-text='msg+ " world"'></div>
+        <!-- 不转义 -->
+        <div v-html='msg+" world"'></div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: '<h1>msg</h1>',
+                msg: 'hallo'
+            }
+        })
+    </script>
+</body>
+
+</html>
