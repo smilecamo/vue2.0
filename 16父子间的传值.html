@@ -10,13 +10,42 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <counter tef='one' :content='0' @cli='handleOneClick'></counter>
+        <counter tef='two' :content='1' @cli='handleOneClick'></counter>
+        {{totle}}
+    </div>
     <script src="./vue.js"></script>
     <script>
+        var counter = {
+            props: ['content'],
+            template: '<div @click="handleClick">{{number}}</div>',
+            data(){
+                return {
+                    number : this.content
+                }
+            },
+            methods: {
+                handleClick(){
+                    this.number++;
+                    // 1,步长 click 自定义事件 
+                    this.$emit('cli',1)
+                }
+            }
+        }
         let app = new Vue({
             el: '#app',
+            components: {
+                counter: counter
+            },
             data: {
-
+                totle: 1
+            },
+            methods: {
+                // step: 步长
+                handleOneClick(step){
+                    this.totle+=step
+                }
             }
         })
     </script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        <child ></child>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('child',{
+            // props: {
+            //     content: [Number,String]
+            // },
+            props: {
+                content: {
+                    // 类型
+                    type: String,
+                    // 是否必传
+                    required: false,
+                    // 默认值
+                    default: '默认值'
+                    // 位数限制
+                    
+                }
+            },
+            template: '<div>{{content}}</div>',
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
