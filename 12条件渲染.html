@@ -5,19 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>条件渲染</title>
 
 </head>
 
 <body>
-    <div id="app"></div>
+    <!-- v-if v-else v-show -->
+    <!-- <div id="app">
+        <div v-if='iff' @click='handleClick'>{{msg}}</div>
+        <div v-else>{{msg + ' else'}}</div>
+        <div v-show='show' >{{msg}}</div>
+    </div>
     <script src="./vue.js"></script>
     <script>
         let app = new Vue({
             el: '#app',
             data: {
-                
+                msg: 'Hello World',
+                show: false,
+                iff: false,
+            },
+            methods: {
+                handleClick(){
+                    return this.iff=this.iff===false?true:false
+                }
             }
+            
+        })
+    </script> -->
+
+<!-- v-if v-else-if v-else -->
+
+    <div id="app">
+        <div v-if='show==="a"' @click='handleClick'>this is a</div>
+        <div v-else-if='show==="b"'>this is b</div>
+        <div v-else >this is others</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello World',
+                show: 'a',
+            },
+            methods: {
+                handleClick(){
+                    return this.show=this.show==='a'?'b':'a'
+                }
+            }
+            
         })
     </script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- key值最好使用数据中的 -->
+        <div v-for='(list,index) of lists'
+            :key='list.id'>
+            {{list.text}}----{{index}}
+        </div>
+
+        <!-- 借助template来占位 -->
+        <template v-for='(list,index) of lists'
+            :key='list.id'>
+           <div>{{list.text}}----{{index}}</div> 
+           <span>{{list.text}}</span> 
+        </template>
+        <!-- key:键名,item:键值,index:下标 -->
+        <template v-for='(item,key,index) of items'>
+               <div>{{key}}:{{item}}:{{index}}</div> 
+        </template>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                lists: [
+                    {
+                        id: '10101',
+                        text: 'hello'
+                    },
+                    {
+                        id: '10102',
+                        text: 'dell'
+                    },
+                    {
+                        id: '10103',
+                        text: 'list'
+                    },
+                ],
+                items: {
+                    age: 23,
+                    name: 'zhangsan',
+                    sex: '男',
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
