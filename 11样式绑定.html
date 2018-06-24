@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+    .actived{
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 借助class和方法绑定样式 class对象绑定-->
+    <!-- <div id="app">
+        <div @click='hadleClick'
+             :class='{actived: isActived}'
+        >Hello World</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                isActived: false,
+            },
+            methods: {
+                hadleClick(){
+                    this.isActived = !this.isActived;
+                }
+            }
+        })
+    </script> -->
+    <!-- class变量绑定 -->
+    <!-- <div id="app">
+        <div @click='hadleClick'
+             :class='[actived]'
+        >Hello World</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                actived: '',
+            },
+            methods: {
+                hadleClick(){
+                    this.actived = this.actived==='actived'?
+                    '':'actived'
+                }
+            }
+        })
+    </script> -->
+    <!-- style样式绑定 -->
+    <!-- <div id="app">
+        <div :style='styleObj'
+             @click='hadleClick'>Hello World</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                styleObj: {
+                    color: 'black'
+                }
+            },
+            methods: {
+                hadleClick(){
+                    this.styleObj.color=this.styleObj.color==='black'?'red':'black'
+                }
+            }
+        })
+    </script> -->
+
+    
+    <div id="app">
+        <div :style='[styleObj,fondSize]'
+             @click='hadleClick'>Hello World</div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                styleObj: {
+                    color: 'black'
+                },
+                fondSize: {
+                    fontSize: '26px',
+                }
+            },
+            methods: {
+                hadleClick(){
+                    this.styleObj.color=this.styleObj.color==='black'?'red':'black'
+                    this.fondSize.fontSize=this.fondSize.fontSize==='26px'?'12px':'26px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
