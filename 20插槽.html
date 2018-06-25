@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <h1>666</h1>
+        </child>
+        <!-- 默认值插槽 -->
+        <child>
+        </child>
+        <!-- 具名插槽 -->
+        <bod>
+            <div class="header" slot="header">header</div>
+            <div class="footer" slot="footer">footer</div>
+        </bod>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('child',{
+            template: `<div>
+                        <p>hello</p>
+                        <slot>可以设置默认值</slot>
+                        </div>`
+        });
+        Vue.component('bod',{
+            template:  `<div>
+                        <slot name='header'></slot>
+                        <div class="content">content</div>
+                        <slot name='footer'></slot>
+                        </div>`
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
