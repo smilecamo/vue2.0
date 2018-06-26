@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+    .fade-enter,
+    .fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,
+    .fade-leave-active{
+        transition: opacity 3s;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 做动画的必须放到transition中  name定义的是名字 -->
+        <transition name='fade'>
+        <div v-if='type'> 显示</div>
+        </transition>
+        <button @click='hadleClick'>切换</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                type: true
+            },
+            methods: {
+                hadleClick(){
+                    this.type=!this.type
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

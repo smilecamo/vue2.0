@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./animate.css">
+    <title></title>
+    <style>
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- appear设置进场动画 -->
+        <!-- type 时长以哪一个为准 -->
+        <!-- enter-active-class="animated shake fade-enter-active" 使用过渡效果 -->
+        <!-- < :duration='{enter:5000,leave:1000}'  自定义动画时长-->
+        <transition 
+        :duration='{enter:5000,leave:1000}' 
+        type='transition' 
+        name='fade' 
+        appear 
+        appear-active-class="animated swing"
+        enter-active-class="animated shake fade-enter-active" 
+        leave-active-class="animated swing fade-leave-active">
+        <div v-show='show'>{{msg}}</div>
+        </transition>
+        <button @click='hadleClick'>toggle</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello world',
+                show: true
+            },
+            methods: {
+                hadleClick() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

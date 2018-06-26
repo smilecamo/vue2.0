@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    
+    <style>
+    @keyframes bounce-in{
+        0%{
+            transform: scale(0)
+        }
+        50%{
+            transform: scale(1.5)
+        }
+        100%{
+            transform: scale(1)
+        }
+    }
+    .active{
+        transform-origin: left center;
+        animation: bounce-in 1s;
+    }
+    .leave{
+        transform-origin: left center;
+        animation: bounce-in 1s reverse;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+<!-- 自定义命名    enter-active-class -->
+        <transition 
+        name='fade' 
+        enter-active-class='active'
+        leave-active-class='leave'>
+        <div v-show='type'>{{msg}}</div>
+        </transition>
+        
+        <button @click='handleClick'>切换</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: '动画',
+                type: true
+            },
+            methods: {
+                handleClick(){
+                    this.type=!this.type
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
