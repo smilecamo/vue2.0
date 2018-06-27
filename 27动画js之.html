@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 入场动画 -->
+        <!-- @before-enter 隐藏之后的显示 初始动画-->
+        <!-- @enter 开始入场动画   开始动画-->
+        <!-- @after-enter 结束动画-->
+        <!-- 出场动画 -->
+        <!-- @before-leave -->
+        <!-- leave -->
+        <!-- after-leave -->
+        <!-- @before-leave='hadleBeforeLeave'
+        @leave='hadleLeave'
+        @after-leaver='hadleAfterLeave' -->
+        <transition name='fade'
+        @before-enter='hadleBeforEnter'
+        @enter='hadleEnter'
+        @after-enter='hadleAfterEnter'
+        
+        >
+        <div v-if='show'>{{msg}}</div>
+        </transition>
+        <button @click='hadleClcik'>qiehuan</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="https://cdn.bootcss.com/velocity/2.0.4/velocity.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                msg: 'false'
+            },
+            methods: {
+                hadleClcik(){
+                    this.show=!this.show
+                },
+
+
+
+                // // hadleenter(),接受一个参数el  开始的时候状态
+                // hadleBeforEnter(el){
+                //     el.style.color='red'
+                // },
+                // // 接受两个参数 el  done():代表结束
+                // hadleEnter(el,done){
+                //     setTimeout(()=>{
+                //         el.style.color='green'
+                //     },2000)
+                //     setTimeout(()=>{
+                //         done()
+                //     },4000)
+                // },
+                // // 动画结束
+                // hadleAfterEnter(el){
+                //     el.style.color='#000'
+                // },
+                hadleBeforEnter(el){
+                    el.style.opacity=0;
+                },
+                hadleEnter(el,done){
+                    Velocity(el,{
+                        // 运动到什么
+                        opacity:1
+                    },{
+                        // 执行时间
+                        duration: 1000,
+                        // 动画结束后调用
+                        complete: done
+                    })
+                },
+                hadleAfterEnter(el){
+                    console.log('动画结束');
+                }
+
+
+
+                // hadleBeforeLeave(el){
+                //     el.style.color='#000'
+                // },
+                // hadleLeave(el,done){
+                //     setTimeout(()=>{
+                //         el.style.color='#fff'
+                //     },2000)
+                //     setTimeout(()=>{
+                //         done()
+                //     })
+                // },
+                // hadleAfterLeave(el){
+                //     el.style.color='#000'
+                // }
+            }
+        })
+    </script>
+</body>
+
+</html>
