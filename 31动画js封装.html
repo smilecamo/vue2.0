@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+</head>
+
+<body>
+    <div id="app">
+        <fade :show='show'>
+            <div>msg</div>
+        </fade>
+        <button @click='handleClick'>toogle</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('fade',{
+            props: ['show'],
+            template: `
+            <transition 
+            @before-enter='hadlebeforeEnter'
+            @enter='hadleEnter'
+            @after-enter='hadleafterEnter'>
+            <slot v-if='show'></slot>
+            </transition>
+            `,
+            methods: {
+                hadlebeforeEnter(el){
+                    el.style.color='red'
+                },
+                hadleEnter(el,done){
+                    setTimeout(()=>{
+                        el.style.color='green'
+                    },2000)
+                    setTimeout(()=>{
+                        done()
+                    },4000)
+                },
+                hadleafterEnter(el){
+                    el.style.color='#000'
+                }
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                handleClick(){
+                    this.show=!this.show
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

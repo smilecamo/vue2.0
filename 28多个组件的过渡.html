@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+    /* .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 1s;
+    } */
+     .fade-enter,
+    .fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,
+    .fade-leave-active{
+        transition: opacity 3s;
+    }
+     .con-enter,
+    .con-leave-to{
+        opacity: 0;
+    }
+    .con-enter-active,
+    .con-leave-active{
+        transition: opacity 1s;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- mode='in out' 先进后出  made='out in' 先出后进 -->
+        <transition
+        name='fade'
+        mode='in-out'>
+        <!-- 如果一个动画作用在两个元素上,需要给组件加key值 -->
+        <div v-if='show' key='msg'>msg</div>
+        <div v-else key='msg1'>msg1</div>
+        </transition>
+        <button @click='hadleClick'>toggle</button>
+        <transition 
+        name='con'
+        mode='in-out'>
+        <!-- 如果作用在多个组件上就使用动态组件进行加载 -->
+            <!-- <child v-if='type'></child>
+            <child-one v-else></child-one> -->
+            <component :is="types"></component>
+        </transition>
+        <button @click='hadleConClick'> toogle</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('child',{
+            template: '<div>child</div>'
+        })
+        Vue.component('child-one',{
+            template: '<div>child-one</div>'
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+                ,type: true
+                ,types: 'child'
+            },
+            methods: {
+                hadleClick(){
+                    this.show=!this.show
+                },
+                hadleConClick(){
+                    // this.type=!this.type;
+                    this.types=this.types==='child'?'child-one':'child'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

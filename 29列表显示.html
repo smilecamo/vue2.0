@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+    .fade-enter,.fade-leave-to{
+        opacity: 0;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 1s
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition-group name='fade'>
+            <div v-for='item of items' :key='item.id'>
+                {{item.title}}
+            </div>
+        </transition-group>
+        
+        <button @click='hadleClick'>add</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        var count = 0
+        let app = new Vue({
+            el: '#app',
+            data: {
+                items: [],
+            },
+            methods: {
+                hadleClick(){
+                    this.items.push({
+                        id: count++,
+                        title: 'hallo word'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
